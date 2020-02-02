@@ -1,0 +1,9 @@
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t nobscs/docker-react -f Dockerfile.dev .
+
+script:
+  - docker run -e CI=true nobscs/docker-react npm run test
